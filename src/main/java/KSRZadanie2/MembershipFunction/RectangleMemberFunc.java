@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RectangleMemberFunc implements IMemberFunc<Double> {
+public class RectangleMemberFunc implements IMemberFunc {
     //  d c
     // a   b
     Double a;

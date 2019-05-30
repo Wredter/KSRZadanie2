@@ -1,31 +1,31 @@
 package KSRZadanie2.Collection;
 
+import KSRZadanie2.MembershipFunction.IMemberFunc;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import java.util.ArrayList;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class FuzzyCollection<T> implements ICollection<FuzzyCollection>{
-    public ArrayList<T> values;
+public class FuzzyCollection implements ICollection {
+    public IMemberFunc memberFunc;
 
-    @Override
-    public FuzzyCollection Union(FuzzyCollection collection) {
+    public Double MemberFuncResult(Double x) {
+        return memberFunc.Result(x);
+    }
+
+    public FuzzyCollection Union(FuzzyCollection collection, Double x) {
         return null;
     }
 
-    @Override
-    public FuzzyCollection Complement(FuzzyCollection collection) {
+    public FuzzyCollection Complement(FuzzyCollection collection, Double x) {
         return null;
     }
 
-    @Override
-    public FuzzyCollection Intersection(FuzzyCollection collection) {
+    public FuzzyCollection Intersection(FuzzyCollection collection, Double x) {
         return null;
     }
 
-    @Override
-    public Boolean Equal(FuzzyCollection collection) {
+    public Boolean Equal(FuzzyCollection collection, Double x) {
         return null;
     }
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TriangleMemberFunc implements IMemberFunc<Double> {
+public class TriangleMemberFunc implements IMemberFunc {
     //  b
     // a c
     Double a;
