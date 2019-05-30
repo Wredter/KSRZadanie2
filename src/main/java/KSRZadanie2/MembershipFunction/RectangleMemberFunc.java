@@ -1,8 +1,6 @@
 package KSRZadanie2.MembershipFunction;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @AllArgsConstructor
@@ -14,6 +12,7 @@ public class RectangleMemberFunc implements IMemberFunc {
     Double b;
     Double c;
     Double d;
+
     @Builder.Default
     Double height = 1.0;
 
@@ -23,5 +22,10 @@ public class RectangleMemberFunc implements IMemberFunc {
         if (x > a && x < d) return (x - a) / (d - a);
         if (x > c && x < b) return (b - x) / (b - c);
         return 0.0;
+    }
+
+    @Override
+    public Double GetHeight() {
+        return this.height;
     }
 }

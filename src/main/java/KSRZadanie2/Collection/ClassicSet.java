@@ -10,19 +10,41 @@ import java.util.ArrayList;
 public class ClassicSet implements ISet {
     public ArrayList<Double> values;
 
-    public ClassicSet Union(ClassicSet collection) {
-        return null;
+    public ClassicSet Union(ClassicSet set) {
+        ArrayList<Double> result = this.values;
+
+        for (Double val : set.values) {
+            if (!this.values.contains(val)) {
+                result.add(val);
+            }
+        }
+        return new ClassicSet(result);
     }
 
-    public ClassicSet Complement(ClassicSet collection) {
-        return null;
+    public ClassicSet Intersection(ClassicSet set) {
+        ArrayList<Double> result = new ArrayList<>();
+
+        for (Double val : set.values) {
+            if (this.values.contains(val)) {
+                result.add(val);
+            }
+        }
+        return new ClassicSet(result);
     }
 
-    public ClassicSet Intersection(ClassicSet collection) {
-        return null;
+    public ClassicSet Complemention(ClassicSet set) {
+        ArrayList<Double> result = new ArrayList<>();
+
+        for (Double val : set.values) {
+            if (!this.values.contains(val)) {
+                result.add(val);
+            }
+        }
+        return new ClassicSet(result);
     }
 
-    public Boolean Equal(ClassicSet collection) {
-        return null;
+    public Boolean Equal(ClassicSet set) {
+        return set.values.containsAll(this.values);
+        //return this.values.containsAll(set.values);
     }
 }

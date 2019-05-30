@@ -1,8 +1,6 @@
 package KSRZadanie2.MembershipFunction;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @AllArgsConstructor
@@ -13,8 +11,9 @@ public class TriangleMemberFunc implements IMemberFunc {
     Double a;
     Double b;
     Double c;
+
     @Builder.Default
-    public Double height = 1.0;
+    Double height = 1.0;
 
     @Override
     public Double Result(Double x) {
@@ -23,5 +22,10 @@ public class TriangleMemberFunc implements IMemberFunc {
         if (x > b && x < c) return (c - x) / (c - b);
         if(Math.abs(x) == c) return 1.0;
         return 0.0;
+    }
+
+    @Override
+    public Double GetHeight() {
+        return this.height;
     }
 }
