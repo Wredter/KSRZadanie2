@@ -1,4 +1,4 @@
 package KSRZadanie2.Collection;
 
-public interface ICollection {
+public interface ISet {
 }
