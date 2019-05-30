@@ -1,14 +1,13 @@
-package KSRZadanie2.DataService;
+package KSRZadanie2.Model.DataService;
 
 import KSRZadanie2.Model.Match;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class DataInserter {
-    public static List<Match> insert(){
+    public static List<Match> insert() {
         String path = "Data";
         DataParser dataParser = new DataParser();
         List<Match> matches = new LinkedList<>();

@@ -1,4 +1,4 @@
-package KSRZadanie2.DataService;
+package KSRZadanie2.Model.DataService;
 
 import KSRZadanie2.Model.Match;
 import lombok.NoArgsConstructor;
@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
+
 @NoArgsConstructor
 public class DataParser {
 
@@ -41,35 +42,45 @@ public class DataParser {
             int counter = 10;
             if (csvLabels[counter].equals("Attendance")) {
                 attendanceFlag = true;
-                counter ++;
-            }if (csvLabels[counter].equals("Referee")) {
+                counter++;
+            }
+            if (csvLabels[counter].equals("Referee")) {
                 reefereeFlag = true;
-                counter ++;
-            }if (csvLabels[counter].equals("HS")) {
+                counter++;
+            }
+            if (csvLabels[counter].equals("HS")) {
                 teamShotsFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HST")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HST")) {
                 teamShotsOnTargetFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HHW")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HHW")) {
                 teamHitWoodworkFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HC")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HC")) {
                 teamCornersFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HF")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HF")) {
                 teamFoulsFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HFKC")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HFKC")) {
                 teamFreeKicksFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HO")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HO")) {
                 teamOffsidesFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HY")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HY")) {
                 teamYellowCardsFlag = true;
-                counter +=2;
-            }if (csvLabels[counter].equals("HR")) {
+                counter += 2;
+            }
+            if (csvLabels[counter].equals("HR")) {
                 teamRedCardsFlag = true;
             }
 
@@ -80,7 +91,7 @@ public class DataParser {
                     String[] csvMatch = line.split(",");
 
                     Match match = new Match();
-                    if(fieldsNumber == csvMatch.length) {
+                    if (fieldsNumber == csvMatch.length) {
                         //Set all values for match
                         match.setLeagueDivision(csvMatch[0]);
                         match.setDate(dateParser.parse(csvMatch[1]));
@@ -158,10 +169,9 @@ public class DataParser {
                         //Add matches to list of matches
                         matches.add(match);
                     }
-                }catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     System.out.println("Wpis ominięty");
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     System.out.println("Counter : " + counter);
                     System.out.println("Plik : " + path);
                     e.printStackTrace();

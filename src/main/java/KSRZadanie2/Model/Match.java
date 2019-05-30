@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-@AllArgsConstructor @NoArgsConstructor
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Match {
     private String leagueDivision;

@@ -1,4 +1,4 @@
-package KSRZadanie2.DataService;
+package KSRZadanie2.Model.DataService;
 
 import lombok.NoArgsConstructor;
 
@@ -10,9 +10,10 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
+
 @NoArgsConstructor
 public class DataLoader {
-    public void downloadFiles(String outputFolder){
+    public void downloadFiles(String outputFolder) {
         int i = 0;
         File theDir = new File(outputFolder);
 
@@ -21,21 +22,20 @@ public class DataLoader {
             System.out.println("creating directory: " + theDir.getName());
             boolean result = false;
 
-            try{
+            try {
                 theDir.mkdir();
                 result = true;
-            }
-            catch(SecurityException se){
+            } catch (SecurityException se) {
                 se.printStackTrace();
             }
-            if(result) {
+            if (result) {
                 System.out.println("DIR created");
             }
         }
         File f = new File(outputFolder + "/LeagueData" + i + ".csv");
-        if(f.exists() && !f.isDirectory()) {
+        if (f.exists() && !f.isDirectory()) {
             System.out.println("Folder posiada już pliki z danymi.");
-        }else {
+        } else {
             List<String> urlList = makeUrlList();
 
             for (String url : urlList) {
@@ -44,7 +44,8 @@ public class DataLoader {
             }
         }
     }
-    private void downloadFile(String outputFile, String url){
+
+    private void downloadFile(String outputFile, String url) {
         URL website = null;
         ReadableByteChannel rbc = null;
         FileOutputStream fos = null;
@@ -58,7 +59,8 @@ public class DataLoader {
             e.printStackTrace();
         }
     }
-    private List<String> makeUrlList(){
+
+    private List<String> makeUrlList() {
         List<String> urls = new ArrayList<>();
         //Liga angielska lata 2015/19
         urls.add("http://www.football-data.co.uk/mmz4281/1819/E0.csv");
