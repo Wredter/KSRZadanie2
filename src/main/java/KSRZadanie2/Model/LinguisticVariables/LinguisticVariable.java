@@ -1,4 +1,4 @@
-package KSRZadanie2.Model;
+package KSRZadanie2.Model.LinguisticVariables;
 
 import java.util.ArrayList;
 
