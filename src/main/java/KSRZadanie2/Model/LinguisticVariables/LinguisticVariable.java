@@ -1,5 +1,7 @@
 package KSRZadanie2.Model.LinguisticVariables;
 
+import KSRZadanie2.MembershipFunction.IMemberFunc;
+
 import java.util.ArrayList;
 
 //I hope it will help, but it also can be useless
@@ -8,6 +10,7 @@ public abstract class LinguisticVariable {
     String name;
     ArrayList<String> labelsCollection;
     String reflectionSpace;
+    IMemberFunc membershipFunction;
 
     public abstract String LabelForValue(Double value);
 
