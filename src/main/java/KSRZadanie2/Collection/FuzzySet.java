@@ -14,11 +14,19 @@ public class FuzzySet implements ISet {
     }
 
     public Double Union(FuzzySet set, Double x) {
-        return Math.max(set.MemberFuncResult(x), this.MemberFuncResult(x));
+        return Math.max(this.MemberFuncResult(x), set.MemberFuncResult(x));
+    }
+
+    public Double Union(FuzzySet set, Double x1, Double x2) {
+        return Math.max(this.MemberFuncResult(x1), set.MemberFuncResult(x2));
     }
 
     public Double Complement(FuzzySet set, Double x) {
-        return Math.min(set.MemberFuncResult(x), this.MemberFuncResult(x));
+        return Math.min(this.MemberFuncResult(x), set.MemberFuncResult(x));
+    }
+
+    public Double Complement(FuzzySet set, Double x1, Double x2) {
+        return Math.min(this.MemberFuncResult(x1), set.MemberFuncResult(x2));
     }
 
     public Double Intersection(Double x) {
@@ -26,7 +34,7 @@ public class FuzzySet implements ISet {
     }
 
     public Double Difference(FuzzySet set, Double x) {
-        return Math.min(set.Intersection(x), this.MemberFuncResult(x));
+        return Math.min(this.MemberFuncResult(x), set.Intersection(x));
     }
 
     public Boolean Equal(FuzzySet set, Double x) {

@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 @AllArgsConstructor
 public abstract class LinguisticVariable {
-    String label;
-    FuzzySet fuzzySet;
+    public String label;
+    public FuzzySet fuzzySet;
 }
