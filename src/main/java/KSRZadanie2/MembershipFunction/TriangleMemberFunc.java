@@ -6,8 +6,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TriangleMemberFunc implements IMemberFunc {
-    //  b
-    // a c
+    //  c
+    // a b
     Double a;
     Double b;
     Double c;
@@ -17,10 +17,10 @@ public class TriangleMemberFunc implements IMemberFunc {
 
     @Override
     public Double Result(Double x) {
-        if (x < a || x > c) return 0.0;
-        if (x > a && x < b) return (x - a) / (b - a);
-        if (x > b && x < c) return (c - x) / (c - b);
-        if(Math.abs(x) == c) return 1.0;
+        if (x < a || x > b) return 0.0;
+        if (x > a && x < c) return (x - a) / (c - a);
+        if (x > c && x < b) return (b - x) / (b - c);
+        if(Math.abs(x) == b) return 1.0;
         return 0.0;
     }
 
