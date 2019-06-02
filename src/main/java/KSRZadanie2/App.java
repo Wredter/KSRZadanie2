@@ -20,8 +20,5 @@ public class App
         dl.downloadFiles("Data");
         List<Match> result = DataInserter.insert();
         System.out.println(result.size());
-
-        TriangleMemberFunc x = new TriangleMemberFunc(1.0, 2.0, 3.0, 1.0);
-        System.out.println(x.height);
     }
 }
