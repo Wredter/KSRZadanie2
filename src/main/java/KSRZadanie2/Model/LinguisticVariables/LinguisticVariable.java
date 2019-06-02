@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public abstract class LinguisticVariable {
     String name;
     ArrayList<String> labelsCollection;
-    String reflectionSpace;
+    Double minValue;
+    Double maxValue;
     IMemberFunc membershipFunction;
 
     public abstract String LabelForValue(Double value);
