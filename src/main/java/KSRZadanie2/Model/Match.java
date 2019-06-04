@@ -40,5 +40,4 @@ public class Match {
     private Integer awayTeamYellowCards;
     private Integer homeTeamRedCards;
     private Integer awayTeamRedCards;
-
 }
