@@ -6,8 +6,8 @@ import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 import java.util.List;
 //QP będących S1 jest S2//
 public class SecondTypeSummary extends FirstTypeSummary {
-    List<Double> ValuesForQualifier;
-    Qualifier Qualifier;
+    public List<Double> ValuesForQualifier;
+    public Qualifier Qualifier;
 
     public SecondTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, List<Double> valuesForQualifier, Summarizer summarizer1, List<Double> valuesForSummarizer1, List<Double> valuesForQuantifier, Qualifier qualifier) {
         super(subject, quantifier, valuesForQualifier, summarizer1, valuesForSummarizer1);

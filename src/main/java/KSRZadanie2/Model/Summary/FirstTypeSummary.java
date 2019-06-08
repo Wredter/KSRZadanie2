@@ -10,7 +10,7 @@ public class FirstTypeSummary
 {
     public String Subject;
     public Quantifier Quantifier;
-    public List<Double> ValuesForQualifier;
+    public List<Double> ValuesForQuantifier;
     public Summarizer Summarizer1;
     public Summarizer Summarizer2;
     public List<Double> ValuesForSummarizer1;
@@ -20,7 +20,7 @@ public class FirstTypeSummary
     public FirstTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, List<Double> valuesForQualifier, Summarizer summarizer1, List<Double> valuesForSummarizer1) {
         Subject = subject;
         Quantifier = quantifier;
-        ValuesForQualifier = valuesForQualifier;
+        ValuesForQuantifier = valuesForQualifier;
         Summarizer1 = summarizer1;
         ValuesForSummarizer1 = valuesForSummarizer1;
     }
@@ -28,7 +28,7 @@ public class FirstTypeSummary
     public FirstTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, List<Double> valuesForQualifier, Summarizer summarizer1, Summarizer summarizer2, List<Double> valuesForSummarizer1, List<Double> valuesForSummarizer2, String operation) {
         Subject = subject;
         Quantifier = quantifier;
-        ValuesForQualifier = valuesForQualifier;
+        ValuesForQuantifier = valuesForQualifier;
         Summarizer1 = summarizer1;
         Summarizer2 = summarizer2;
         ValuesForSummarizer1 = valuesForSummarizer1;
