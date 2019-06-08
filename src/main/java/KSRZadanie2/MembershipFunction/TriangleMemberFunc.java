@@ -28,4 +28,9 @@ public class TriangleMemberFunc implements IMemberFunc {
     public Double GetHeight() {
         return this.height;
     }
+
+    @Override
+    public String ToString() {
+        return "Trójkątna";
+    }
 }

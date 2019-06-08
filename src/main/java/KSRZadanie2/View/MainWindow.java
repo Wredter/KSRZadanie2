@@ -2,10 +2,12 @@ package KSRZadanie2.View;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.tools.Tool;
 import java.awt.*;
 
 public class MainWindow extends JFrame {
     MainController controller;
+    MainWindowHelper helper;
 
     //region JFrameElements
     private JPanel MainPanel;
@@ -31,6 +33,14 @@ public class MainWindow extends JFrame {
     private JTextField quantifierMemberFuncParamC;
     private JTextField quantifierMemberFuncParamD;
     private JComboBox quantifierMemberFuncs;
+    private JPanel summarizerToolPanel;
+    private JButton summarizerAddButton;
+    private JPanel quantifierToolPanel;
+    private JButton quantifierAddButton;
+    private JPanel summaryToolPanel;
+    private JButton summaryAddButton;
+    private JButton summaryClearButton;
+    private JButton summarySaveButton;
     private JPanel MemberFuncParamsPanel;
     //endregion
 
@@ -42,10 +52,11 @@ public class MainWindow extends JFrame {
         setLocation(50, 50);
         setVisible(true);
 
+        controller = new MainController();
+        helper = new MainWindowHelper(controller);
+
         CreateMainPanelStructure();
         add(MainPanel);
-
-        controller = new MainController();
     }
 
     public void CreateMainPanelStructure() {
@@ -66,12 +77,10 @@ public class MainWindow extends JFrame {
         CreateSummarizationPanelStructure();
         LeftPanel.add(SummarizerPanel);
 
-        title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Kwantyfikator");
-        QuantifierPanel.setBorder(title);
+        CreateQuantifierPanelStructure();
         LeftPanel.add(QuantifierPanel);
 
-        title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Akcje");
-        ToolPanel.setBorder(title);
+        CreatToolPanelStructure();
         LeftPanel.add(ToolPanel);
     }
 
@@ -95,9 +104,26 @@ public class MainWindow extends JFrame {
         SummarizerPanel.setLayout(new GridLayout(1, 2));
 
         SummarizerPanel.add(SummarizerAtributesPanel);
-        summarizerAtributes.addItem("XD");
 
         SummarizerPanel.add(SummarizerMemberFuncPanel);
-        summarizerMemberFuncs.addItem("XD2");
+        helper.PrepareMemberFuncComboBox(summarizerMemberFuncs);
+    }
+
+    public void CreateQuantifierPanelStructure() {
+        TitledBorder title;
+        title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Kwantyfikator");
+        QuantifierPanel.setBorder(title);
+
+        helper.PrepareMemberFuncComboBox(quantifierMemberFuncs);
+    }
+
+    public void CreatToolPanelStructure() {
+        TitledBorder title;
+        title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Akcje");
+        ToolPanel.setBorder(title);
+        ToolPanel.setLayout(new GridLayout(1, 3, 3, 3));
+        ToolPanel.add(summarizerToolPanel);
+        ToolPanel.add(quantifierToolPanel);
+        ToolPanel.add(summaryToolPanel);
     }
 }
