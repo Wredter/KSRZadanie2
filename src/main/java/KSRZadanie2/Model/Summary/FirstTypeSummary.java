@@ -35,4 +35,17 @@ public class FirstTypeSummary
         ValuesForSummarizer2 = valuesForSummarizer2;
         Operation = operation;
     }
+
+    @Override
+    public String toString() {
+        if(Operation.equals("NONE")){
+            return String.format("%1$s %2$s jest/ma %3$s",Quantifier.label,Subject,Summarizer1.label);
+        }if(Operation.equals("AND")){
+            return String.format("%1$s %2$s jest/ma %3$s oraz %4$s",Quantifier.label,Subject,Summarizer1.label,Summarizer2.label);
+        }if(Operation.equals("OR")){
+            return String.format("%1$s %2$s jest/ma %3$s lub %4$s",Quantifier.label,Subject,Summarizer1.label,Summarizer2.label);
+        }else {
+            return "Summary does not meet requirements";
+        }
+    }
 }
