@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.tools.Tool;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainWindow extends JFrame {
     MainController controller;
@@ -57,6 +59,19 @@ public class MainWindow extends JFrame {
 
         CreateMainPanelStructure();
         add(MainPanel);
+        summarizerAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.CreateSummarizer((String) summarizerAtributes.getSelectedItem(), summarizerMemberFuncLabel.getText(), (String) summarizerMemberFuncs.getSelectedItem(), Double.parseDouble(summarizerMemberFuncParamA.getText()), Double.parseDouble(summarizerMemberFuncParamB.getText()), Double.parseDouble(summarizerMemberFuncParamC.getText()), Double.parseDouble(summarizerMemberFuncParamD.getText()));
+            }
+        });
+        quantifierAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.CreateQuantifier(quantifierMemberFuncLabel.getText(), (String) quantifierMemberFuncs.getSelectedItem(), Double.parseDouble(quantifierMemberFuncParamA.getText()), Double.parseDouble(quantifierMemberFuncParamB.getText()), Double.parseDouble(quantifierMemberFuncParamC.getText()), Double.parseDouble(quantifierMemberFuncParamD.getText()));
+
+            }
+        });
     }
 
     public void CreateMainPanelStructure() {
@@ -121,7 +136,7 @@ public class MainWindow extends JFrame {
         TitledBorder title;
         title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Akcje");
         ToolPanel.setBorder(title);
-        ToolPanel.setLayout(new GridLayout(1, 3, 3, 3));
+        ToolPanel.setLayout(new GridLayout(1, 3));
         ToolPanel.add(summarizerToolPanel);
         ToolPanel.add(quantifierToolPanel);
         ToolPanel.add(summaryToolPanel);
