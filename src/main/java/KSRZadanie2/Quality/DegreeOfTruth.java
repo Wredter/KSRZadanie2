@@ -3,6 +3,7 @@ package KSRZadanie2.Quality;
 import KSRZadanie2.Model.LinguisticVariables.LinguisticVariable;
 import KSRZadanie2.Model.LinguisticVariables.Quantifier;
 import KSRZadanie2.Model.LinguisticVariables.Summarizer;
+import KSRZadanie2.Model.Summary.FirstTypeSummary;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class DegreeOfTruth implements IDegree {
     public LinguisticVariable Qualifier;
 
     @Override
-    public Double Calc() {
+    public Double Calc(FirstTypeSummary firstTypeSummary) {
         return Quantifier.fuzzySet.MemberFuncResult(r() / ValuesForSummarizer1.size());
     }
 
