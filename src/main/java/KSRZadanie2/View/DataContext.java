@@ -6,6 +6,7 @@ import KSRZadanie2.MembershipFunction.TriangleMemberFunc;
 import KSRZadanie2.Model.LinguisticVariables.Qualifier;
 import KSRZadanie2.Model.LinguisticVariables.Quantifier;
 import KSRZadanie2.Model.LinguisticVariables.Summarizer;
+import KSRZadanie2.Model.Match;
 import KSRZadanie2.Model.Summary.FirstTypeSummary;
 import KSRZadanie2.Model.Summary.SecondTypeSummary;
 
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataContext {
+    public List<Match> matches;
+
     public IMemberFunc rectangleMemberFunc;
     public IMemberFunc triangleMemberFunc;
 
@@ -24,6 +27,7 @@ public class DataContext {
     public List<SecondTypeSummary> summaries2;
 
     public DataContext() {
+        matches = new ArrayList<>();
         rectangleMemberFunc = new RectangleMemberFunc();
         triangleMemberFunc = new TriangleMemberFunc();
 

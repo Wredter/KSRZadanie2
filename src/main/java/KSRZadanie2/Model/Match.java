@@ -39,7 +39,38 @@ public class Match {
     private Integer homeTeamRedCards;
     private Integer awayTeamRedCards;
 
+    public String ToStringFullTimeHomeGoals() {
+        return "fullTimeHomeGoals";
+    }
+    public String ToStringFullTimeAwayGoals() {
+        return "fullTimeAwayGoals";
+    }
+
+    public String ToStringHalfTimeHomeTeamGoals() {
+        return "halfTimeHomeTeamGoals";
+    }
+    public String ToStringHalfTimeAwayTeamGoals() {
+        return "halfTimeAwayTeamGoals";
+    }
+
     public String ToStringHomeTeamShoots() {
-        return "HomeTeamShots";
+        return "homeTeamShots";
+    }
+    public String ToStringAwayTeamShots() {
+        return "awayTeamShots";
+    }
+
+    public String ToStringHomeTeamShotsOnTarget() {
+        return "homeTeamShotsOnTarget";
+    }
+    public String ToStringAwayTeamShotsOnTarget() {
+        return "awayTeamShotsOnTarget";
+    }
+
+    public String ToStringHomeTeamFoulsCommitted() {
+        return "homeTeamFoulsCommitted";
+    }
+    public String ToStringAwayTeamFoulsCommitted() {
+        return "awayTeamFoulsCommitted";
     }
 }

@@ -23,8 +23,22 @@ public class MainWindowHelper {
     }
 
     public void PrepareAttributesComboBox(JComboBox comboBox) {
-        comboBox.addItem("HomeTeamShots");
-        comboBox.addItem("AwayTeamShots");
+        comboBox.addItem(match.ToStringFullTimeHomeGoals());
+        comboBox.addItem(match.ToStringFullTimeAwayGoals());
+
+        comboBox.addItem(match.ToStringHalfTimeHomeTeamGoals());
+        comboBox.addItem(match.ToStringHalfTimeAwayTeamGoals());
+
+        comboBox.addItem(match.ToStringHomeTeamShoots());
+        comboBox.addItem(match.ToStringAwayTeamShots());
+
+        comboBox.addItem(match.ToStringHomeTeamShotsOnTarget());
+        comboBox.addItem(match.ToStringAwayTeamShotsOnTarget());
+
+
+        comboBox.addItem(match.ToStringHomeTeamFoulsCommitted());
+        comboBox.addItem(match.ToStringAwayTeamFoulsCommitted());
+
 
     }
 
