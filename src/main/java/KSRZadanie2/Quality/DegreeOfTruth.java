@@ -23,9 +23,12 @@ public class DegreeOfTruth implements IDegree {
     private Double r(FirstTypeSummary firstTypeSummary) {
         Double result = 0.0;
         int size;
-
-        if(firstTypeSummary.ValuesForSummarizer1.size() >= firstTypeSummary.ValuesForSummarizer2.size()){
-            size = firstTypeSummary.ValuesForSummarizer2.size();
+        if(!firstTypeSummary.Operation.equals("NONE")) {
+            if (firstTypeSummary.ValuesForSummarizer1.size() >= firstTypeSummary.ValuesForSummarizer2.size()) {
+                size = firstTypeSummary.ValuesForSummarizer2.size();
+            } else {
+                size = firstTypeSummary.ValuesForSummarizer1.size();
+            }
         }else {
             size = firstTypeSummary.ValuesForSummarizer1.size();
         }
