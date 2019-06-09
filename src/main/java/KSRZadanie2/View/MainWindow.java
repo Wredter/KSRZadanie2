@@ -1,5 +1,7 @@
 package KSRZadanie2.View;
 
+import KSRZadanie2.View.Helpers.MainWindowHelper;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;

@@ -10,10 +10,13 @@ import KSRZadanie2.Model.LinguisticVariables.Qualifier;
 import KSRZadanie2.Model.LinguisticVariables.Quantifier;
 import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 import KSRZadanie2.Model.Match;
+import KSRZadanie2.Model.Quality;
 import KSRZadanie2.Model.Summary.FirstTypeSummary;
 import KSRZadanie2.Model.Summary.SecondTypeSummary;
+import KSRZadanie2.View.Helpers.QualityVectorHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainController {
     public DataContext dataContext;
@@ -106,12 +109,15 @@ public class MainController {
 
         if (summarizer2Label.equals("NONE") && operationLabel.equals("NONE") && qualifierLabel.equals("NONE")) {
             FirstTypeSummary summaryType1 = new FirstTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer1Values);
-            dataContext.summaries1.add(summaryType1);
+//            dataContext.summaries1.add(summaryType1);
+            dataContext.summaries1.add(new Quality(summaryType1, CalculateDegreeVector(summaryType1)));
+
         } else if (qualifierLabel.equals("NONE")) {
             summarizer2 = GetSummarizer(summarizer2Label);
             summarizer2Values = PrepareAttributeValuesList(summarizer2.attribute);
             FirstTypeSummary summaryType1 = new FirstTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer2, summarizer1Values, summarizer2Values, operationLabel);
-            dataContext.summaries1.add(summaryType1);
+            //dataContext.summaries1.add(summaryType1);
+            dataContext.summaries1.add(new Quality(summaryType1, CalculateDegreeVector(summaryType1)));
         }
 
 
@@ -121,12 +127,15 @@ public class MainController {
 
             if (summarizer2Label.equals("NONE") && operationLabel.equals("NONE")) {
                 SecondTypeSummary summaryType2 = new SecondTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer1Values, qualifierValues, qualifier);
-                dataContext.summaries2.add(summaryType2);
+                //dataContext.summaries2.add(summaryType2);
+                dataContext.summaries1.add(new Quality(summaryType2, CalculateDegreeVector(summaryType2)));
             } else {
                 summarizer2 = GetSummarizer(summarizer2Label);
                 summarizer2Values = PrepareAttributeValuesList(summarizer2.attribute);
                 SecondTypeSummary summaryType2 = new SecondTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer2, summarizer1Values, summarizer2Values, operationLabel, quantifierValues, qualifier);
-                dataContext.summaries2.add(summaryType2);
+                //dataContext.summaries2.add(summaryType2);
+                dataContext.summaries1.add(new Quality(summaryType2, CalculateDegreeVector(summaryType2)));
+
             }
         }
 
@@ -182,6 +191,46 @@ public class MainController {
             return true;
         }
         return false;
+    }
+
+    public List<Double> CalculateDegreeVector(FirstTypeSummary summary) {
+        ArrayList<Double> resultVector = new ArrayList<>();
+        QualityVectorHelper qualityVectorHelper = new QualityVectorHelper();
+
+        resultVector.add(qualityVectorHelper.T1.Calc(summary));
+        resultVector.add(qualityVectorHelper.T2.Calc(summary));
+        resultVector.add(qualityVectorHelper.T3.Calc(summary));
+        resultVector.add(qualityVectorHelper.T4.Calc(summary));
+        resultVector.add(qualityVectorHelper.T5.Calc(summary));
+        resultVector.add(qualityVectorHelper.T6.Calc(summary));
+        resultVector.add(qualityVectorHelper.T7.Calc(summary));
+        resultVector.add(qualityVectorHelper.T8.Calc(summary));
+        resultVector.add(qualityVectorHelper.T9.Calc(summary));
+        resultVector.add(qualityVectorHelper.T10.Calc(summary));
+        resultVector.add(qualityVectorHelper.T11.Calc(summary));
+        resultVector.add(69.0);
+
+        return resultVector;
+    }
+
+    public List<Double> CalculateDegreeVector(SecondTypeSummary summary) {
+        ArrayList<Double> resultVector = new ArrayList<>();
+        QualityVectorHelper qualityVectorHelper = new QualityVectorHelper();
+
+        resultVector.add(qualityVectorHelper.T1.Calc(summary));
+        resultVector.add(qualityVectorHelper.T2.Calc(summary));
+        resultVector.add(qualityVectorHelper.T3.Calc(summary));
+        resultVector.add(qualityVectorHelper.T4.Calc(summary));
+        resultVector.add(qualityVectorHelper.T5.Calc(summary));
+        resultVector.add(qualityVectorHelper.T6.Calc(summary));
+        resultVector.add(qualityVectorHelper.T7.Calc(summary));
+        resultVector.add(qualityVectorHelper.T8.Calc(summary));
+        resultVector.add(qualityVectorHelper.T9.Calc(summary));
+        resultVector.add(qualityVectorHelper.T10.Calc(summary));
+        resultVector.add(qualityVectorHelper.T11.Calc(summary));
+        resultVector.add(96.0);
+
+        return resultVector;
     }
 
 }

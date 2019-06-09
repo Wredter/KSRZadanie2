@@ -7,8 +7,7 @@ import KSRZadanie2.Model.LinguisticVariables.Qualifier;
 import KSRZadanie2.Model.LinguisticVariables.Quantifier;
 import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 import KSRZadanie2.Model.Match;
-import KSRZadanie2.Model.Summary.FirstTypeSummary;
-import KSRZadanie2.Model.Summary.SecondTypeSummary;
+import KSRZadanie2.Model.Quality;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +22,12 @@ public class DataContext {
     public List<Quantifier> quantifiers;
     public List<Qualifier> qualifiers;
 
-    public List<FirstTypeSummary> summaries1;
-    public List<SecondTypeSummary> summaries2;
+//    public List<FirstTypeSummary> summaries1;
+//    public List<SecondTypeSummary> summaries2;
+
+    public List<Quality> summaries1;
+    public List<Quality> summaries2;
+
 
     public DataContext() {
         matches = new ArrayList<>();
@@ -37,5 +40,6 @@ public class DataContext {
 
         summaries1 = new ArrayList<>();
         summaries2 = new ArrayList<>();
+
     }
 }
