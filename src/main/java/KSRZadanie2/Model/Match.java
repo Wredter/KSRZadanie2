@@ -1,8 +1,6 @@
 package KSRZadanie2.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -40,4 +38,8 @@ public class Match {
     private Integer awayTeamYellowCards;
     private Integer homeTeamRedCards;
     private Integer awayTeamRedCards;
+
+    public String ToStringHomeTeamShoots() {
+        return "HomeTeamShots";
+    }
 }

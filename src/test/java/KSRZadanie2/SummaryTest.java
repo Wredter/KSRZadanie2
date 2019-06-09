@@ -24,7 +24,6 @@ public class SummaryTest {
         gradesList.add(2.0);
         gradesList.add(3.0);
 
-
         IMemberFunc quantifierMemberFunc = new RectangleMemberFunc(0.12, 0.44, 0.36, 0.16, 1.0);
         IMemberFunc summarizerMemberFunc = new RectangleMemberFunc(0.0, 5.0, 3.5, 0.0, 1.0);
 

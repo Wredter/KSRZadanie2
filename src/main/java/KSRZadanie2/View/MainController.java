@@ -5,6 +5,7 @@ import KSRZadanie2.MembershipFunction.IMemberFunc;
 import KSRZadanie2.MembershipFunction.RectangleMemberFunc;
 import KSRZadanie2.MembershipFunction.TriangleMemberFunc;
 import KSRZadanie2.Model.LinguisticVariables.LinguisticVariable;
+import KSRZadanie2.Model.LinguisticVariables.Qualifier;
 import KSRZadanie2.Model.LinguisticVariables.Quantifier;
 import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 
@@ -44,5 +45,15 @@ public class MainController {
         dataContext.quantifiers.add(quantifier);
     }
 
+    public void CreateQualifier(String label, String memberFuncName, Double a, Double b, Double c, Double d) {
+        FuzzySet set = new FuzzySet(CreateMemberFunc(memberFuncName, a, b, c, d));
+        Qualifier qualifier = new Qualifier(label, set);
+
+        dataContext.qualifiers.add(qualifier);
+    }
+
+    public void CreateSummary() {
+        // to do
+    }
 
 }

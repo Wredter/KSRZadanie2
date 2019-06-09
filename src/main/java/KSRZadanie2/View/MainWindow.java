@@ -2,7 +2,6 @@ package KSRZadanie2.View;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +14,7 @@ public class MainWindow extends JFrame {
     private JPanel MainPanel;
     private JPanel LeftPanel;
     private JPanel SummarizerPanel;
-    private JPanel QuantifierPanel;
+    private JPanel QuantifierAndQualifierPanel;
     private JPanel ToolPanel;
     private JPanel RightPanel;
     private JPanel SummaryParametersPanel;
@@ -43,6 +42,22 @@ public class MainWindow extends JFrame {
     private JButton summaryAddButton;
     private JButton summaryClearButton;
     private JButton summarySaveButton;
+    private JTextField summaryTitle;
+    private JComboBox summaryQuantifiers;
+    private JComboBox summarySummarizer1;
+    private JComboBox summarySummarizer2;
+    private JComboBox summaryOperations;
+    private JTable summaries;
+    private JPanel QuantifierMemberFuncPanel;
+    private JPanel QualifierMemberFuncPanel;
+    private JComboBox qualifierMemberFuncs;
+    private JTextField qualifierMemberFuncLabel;
+    private JTextField qualifierMemberFuncParamA;
+    private JTextField qualifierMemberFuncParamB;
+    private JTextField qualifierMemberFuncParamC;
+    private JTextField qualifierMemberFuncParamD;
+    private JButton qualifierAddButton;
+    private JComboBox summaryQualifiers;
     private JPanel MemberFuncParamsPanel;
     //endregion
 
@@ -63,13 +78,28 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.CreateSummarizer((String) summarizerAtributes.getSelectedItem(), summarizerMemberFuncLabel.getText(), (String) summarizerMemberFuncs.getSelectedItem(), Double.parseDouble(summarizerMemberFuncParamA.getText()), Double.parseDouble(summarizerMemberFuncParamB.getText()), Double.parseDouble(summarizerMemberFuncParamC.getText()), Double.parseDouble(summarizerMemberFuncParamD.getText()));
+                helper.AddToComboBox(summarySummarizer1, summarizerMemberFuncLabel.getText());
+                helper.AddToComboBox(summarySummarizer2, summarizerMemberFuncLabel.getText());
             }
         });
         quantifierAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.CreateQuantifier(quantifierMemberFuncLabel.getText(), (String) quantifierMemberFuncs.getSelectedItem(), Double.parseDouble(quantifierMemberFuncParamA.getText()), Double.parseDouble(quantifierMemberFuncParamB.getText()), Double.parseDouble(quantifierMemberFuncParamC.getText()), Double.parseDouble(quantifierMemberFuncParamD.getText()));
-
+                helper.AddToComboBox(summaryQuantifiers, quantifierMemberFuncLabel.getText());
+            }
+        });
+        qualifierAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.CreateQualifier(qualifierMemberFuncLabel.getText(), (String) qualifierMemberFuncs.getSelectedItem(), Double.parseDouble(qualifierMemberFuncParamA.getText()), Double.parseDouble(qualifierMemberFuncParamB.getText()), Double.parseDouble(qualifierMemberFuncParamC.getText()), Double.parseDouble(qualifierMemberFuncParamD.getText()));
+                helper.AddToComboBox(summaryQualifiers, qualifierMemberFuncLabel.getText());
+            }
+        });
+        summaryAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.CreateSummary();
             }
         });
     }
@@ -88,12 +118,11 @@ public class MainWindow extends JFrame {
         TitledBorder title;
         LeftPanel.setLayout(new GridLayout(3, 1));
 
-
         CreateSummarizationPanelStructure();
         LeftPanel.add(SummarizerPanel);
 
-        CreateQuantifierPanelStructure();
-        LeftPanel.add(QuantifierPanel);
+        CreateQuantifierAndQualifierPanelStructure();
+        LeftPanel.add(QuantifierAndQualifierPanel);
 
         CreatToolPanelStructure();
         LeftPanel.add(ToolPanel);
@@ -105,10 +134,14 @@ public class MainWindow extends JFrame {
 
         title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Parametry podsumowania");
         SummaryParametersPanel.setBorder(title);
+        summaryOperations.addItem("NONE");
+        summaryOperations.addItem("AND");
+        summaryOperations.addItem("OR");
         RightPanel.add(SummaryParametersPanel);
 
         title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Wyniki podsumowania");
         SummaryResultPanel.setBorder(title);
+        helper.PrepareSumarriesTable(summaries);
         RightPanel.add(SummaryResultPanel);
     }
 
@@ -118,18 +151,29 @@ public class MainWindow extends JFrame {
         SummarizerPanel.setBorder(title);
         SummarizerPanel.setLayout(new GridLayout(1, 2));
 
+        helper.PrepareAttributesComboBox(summarizerAtributes);
         SummarizerPanel.add(SummarizerAtributesPanel);
 
         SummarizerPanel.add(SummarizerMemberFuncPanel);
         helper.PrepareMemberFuncComboBox(summarizerMemberFuncs);
     }
 
-    public void CreateQuantifierPanelStructure() {
+    public void CreateQuantifierAndQualifierPanelStructure() {
         TitledBorder title;
-        title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Kwantyfikator");
-        QuantifierPanel.setBorder(title);
 
+        QuantifierAndQualifierPanel.setLayout(new GridLayout(1, 2));
+
+        title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Kwantyfikator");
+        QuantifierMemberFuncPanel.setBorder(title);
         helper.PrepareMemberFuncComboBox(quantifierMemberFuncs);
+        QuantifierAndQualifierPanel.add(QuantifierMemberFuncPanel);
+
+        title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Kwalifikator");
+        helper.PrepareMemberFuncComboBox(qualifierMemberFuncs);
+        helper.AddToComboBox(summaryQualifiers, "NONE");
+        QualifierMemberFuncPanel.setBorder(title);
+
+        QuantifierAndQualifierPanel.add(QualifierMemberFuncPanel);
     }
 
     public void CreatToolPanelStructure() {
