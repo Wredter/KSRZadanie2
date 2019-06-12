@@ -47,7 +47,7 @@ public class MainWindowHelper {
     public void PrepareSumarriesTable(JTable table) {
         DefaultTableModel rowModel = new DefaultTableModel(new String[]{"Tresc podsumowania", "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T"}, 0);
         for(Quality summary : controller.dataContext.summaries1) {
-            if (summary != null) {
+            if (summary.summaryType1 != null) {
                 rowModel.addRow(
                         new Object[]{
                                 summary.summaryType1.toString(),
@@ -68,10 +68,10 @@ public class MainWindowHelper {
             }
         }
         for(Quality summary : controller.dataContext.summaries2) {
-            if (summary != null) {
+            if (summary.summaryType2 != null) {
                 rowModel.addRow(
                         new Object[]{
-                                summary.summaryType1.toString(),
+                                summary.summaryType2.toString(),
                                 String.valueOf(summary.qualities.get(0)),
                                 String.valueOf(summary.qualities.get(1)),
                                 String.valueOf(summary.qualities.get(2)),

@@ -124,6 +124,7 @@ public class MainWindow extends JFrame {
 
     public void CreateLeftPanelStructure() {
         TitledBorder title;
+        LeftPanel = new JPanel();
         LeftPanel.setLayout(new GridLayout(3, 1));
 
         CreateSummarizationPanelStructure();
@@ -162,6 +163,7 @@ public class MainWindow extends JFrame {
     public void CreateSummarizationPanelStructure() {
         TitledBorder title;
         title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Sumaryzator");
+        SummarizerPanel = new JPanel();
         SummarizerPanel.setBorder(title);
         SummarizerPanel.setLayout(new GridLayout(1, 2));
 

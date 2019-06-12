@@ -13,6 +13,7 @@ import KSRZadanie2.Model.Match;
 import KSRZadanie2.Model.Quality;
 import KSRZadanie2.Model.Summary.FirstTypeSummary;
 import KSRZadanie2.Model.Summary.SecondTypeSummary;
+import KSRZadanie2.View.Helpers.MockData;
 import KSRZadanie2.View.Helpers.QualityVectorHelper;
 
 import java.util.ArrayList;
@@ -23,6 +24,9 @@ public class MainController {
 
     public MainController() {
         dataContext = new DataContext();
+        MockData mockData = new MockData();
+        dataContext.summarizers = mockData.summarizers;
+        dataContext.quantifiers = mockData.quantifiers;
         LoadMatches();
     }
 
@@ -100,21 +104,14 @@ public class MainController {
         Summarizer summarizer1 = GetSummarizer(summarizer1Label);
         ArrayList<Double> summarizer1Values = PrepareAttributeValuesList(summarizer1.attribute);
 
-        Summarizer summarizer2;
-        ArrayList<Double> summarizer2Values;
-
-        Qualifier qualifier;
-        ArrayList<Double> qualifierValues;
-
-
         if (summarizer2Label.equals("NONE") && operationLabel.equals("NONE") && qualifierLabel.equals("NONE")) {
             FirstTypeSummary summaryType1 = new FirstTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer1Values);
 //            dataContext.summaries1.add(summaryType1);
             dataContext.summaries1.add(new Quality(summaryType1, CalculateDegreeVector(summaryType1)));
 
         } else if (qualifierLabel.equals("NONE")) {
-            summarizer2 = GetSummarizer(summarizer2Label);
-            summarizer2Values = PrepareAttributeValuesList(summarizer2.attribute);
+            Summarizer summarizer2 = GetSummarizer(summarizer2Label);
+            ArrayList<Double> summarizer2Values = PrepareAttributeValuesList(summarizer2.attribute);
             FirstTypeSummary summaryType1 = new FirstTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer2, summarizer1Values, summarizer2Values, operationLabel);
             //dataContext.summaries1.add(summaryType1);
             dataContext.summaries1.add(new Quality(summaryType1, CalculateDegreeVector(summaryType1)));
@@ -122,20 +119,19 @@ public class MainController {
 
 
         if (!qualifierLabel.equals("NONE")) {
-            qualifier = GetQualifier(qualifierLabel);
-            qualifierValues = PrepareAttributeValuesList(qualifier.attribute);
+            Qualifier qualifier = GetQualifier(qualifierLabel);
+            ArrayList<Double> qualifierValues = PrepareAttributeValuesList(qualifier.attribute);
 
             if (summarizer2Label.equals("NONE") && operationLabel.equals("NONE")) {
                 SecondTypeSummary summaryType2 = new SecondTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer1Values, qualifierValues, qualifier);
                 //dataContext.summaries2.add(summaryType2);
-                dataContext.summaries1.add(new Quality(summaryType2, CalculateDegreeVector(summaryType2)));
+                dataContext.summaries2.add(new Quality(summaryType2, CalculateDegreeVector(summaryType2)));
             } else {
-                summarizer2 = GetSummarizer(summarizer2Label);
-                summarizer2Values = PrepareAttributeValuesList(summarizer2.attribute);
+                Summarizer summarizer2 = GetSummarizer(summarizer2Label);
+                ArrayList<Double> summarizer2Values = PrepareAttributeValuesList(summarizer2.attribute);
                 SecondTypeSummary summaryType2 = new SecondTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer2, summarizer1Values, summarizer2Values, operationLabel, quantifierValues, qualifier);
                 //dataContext.summaries2.add(summaryType2);
-                dataContext.summaries1.add(new Quality(summaryType2, CalculateDegreeVector(summaryType2)));
-
+                dataContext.summaries2.add(new Quality(summaryType2, CalculateDegreeVector(summaryType2)));
             }
         }
 
@@ -217,8 +213,10 @@ public class MainController {
         Double i = 0.0;
 
         for(Double d : degreeVector) {
-            result += d;
-            i += 1.0;
+            if(d != null) {
+                result += d;
+                i += 1.0;
+            }
         }
 
         if(i == 0.0) {
