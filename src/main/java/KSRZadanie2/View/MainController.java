@@ -210,20 +210,21 @@ public class MainController {
 
     public Double CalculateGeneralDegree(List<Double> degreeVector) {
         Double result = 0.0;
-        Double i = 0.0;
+        //Double i = 0.0;
 
         for(Double d : degreeVector) {
             if(d != null) {
                 result += d;
-                i += 1.0;
+                //i += 1.0;
             }
         }
 
-        if(i == 0.0) {
-            return 0.0;
-        } else {
-            return (result / i);
-        }
+//        if(i == 0.0) {
+//            return 0.0;
+//        } else {
+//            return (result / i);
+//        }
+        return (result / 11.0);
     }
 
     public List<Double> CalculateDegreeVector(SecondTypeSummary summary) {
