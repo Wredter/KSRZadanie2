@@ -174,7 +174,6 @@ public class MainController {
                 result.add(m.getAwayTeamShotsOnTarget().doubleValue());
             }
 
-
             if (ValidateAttribute(attr, match.ToStringHomeTeamFoulsCommitted(), m.getHomeTeamFoulsCommitted())) {
                 result.add(m.getHomeTeamFoulsCommitted().doubleValue());
             }
@@ -208,9 +207,25 @@ public class MainController {
         resultVector.add(qualityVectorHelper.T9.Calc(summary));
         resultVector.add(qualityVectorHelper.T10.Calc(summary));
         resultVector.add(qualityVectorHelper.T11.Calc(summary));
-        resultVector.add(69.0);
+        resultVector.add(CalculateGeneralDegree(resultVector));
 
         return resultVector;
+    }
+
+    public Double CalculateGeneralDegree(List<Double> degreeVector) {
+        Double result = 0.0;
+        Double i = 0.0;
+
+        for(Double d : degreeVector) {
+            result += d;
+            i += 1.0;
+        }
+
+        if(i == 0.0) {
+            return 0.0;
+        } else {
+            return (result / i);
+        }
     }
 
     public List<Double> CalculateDegreeVector(SecondTypeSummary summary) {
@@ -228,7 +243,7 @@ public class MainController {
         resultVector.add(qualityVectorHelper.T9.Calc(summary));
         resultVector.add(qualityVectorHelper.T10.Calc(summary));
         resultVector.add(qualityVectorHelper.T11.Calc(summary));
-        resultVector.add(96.0);
+        resultVector.add(CalculateGeneralDegree(resultVector));
 
         return resultVector;
     }

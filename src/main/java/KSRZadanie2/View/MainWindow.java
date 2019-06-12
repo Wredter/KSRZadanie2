@@ -24,8 +24,8 @@ public class MainWindow extends JFrame {
     private JComboBox summarizerAtributes;
     private JTextField summarizerMemberFuncLabel;
     private JComboBox summarizerMemberFuncs;
+    private JPanel SummarizerValuesPanel;
     private JPanel SummarizerMemberFuncPanel;
-    private JPanel SummarizerAtributesPanel;
     private JTextField summarizerMemberFuncParamA;
     private JTextField summarizerMemberFuncParamB;
     private JTextField summarizerMemberFuncParamC;
@@ -63,6 +63,7 @@ public class MainWindow extends JFrame {
     private JComboBox quantifierAtributes;
     private JComboBox qualifierAttributes;
     private JLabel Atrybut;
+    private JTable summarizationValuesTable;
     private JPanel MemberFuncParamsPanel;
     //endregion
 
@@ -111,6 +112,7 @@ public class MainWindow extends JFrame {
     }
 
     public void CreateMainPanelStructure() {
+        MainPanel = new JPanel();
         MainPanel.setLayout(new GridLayout(1, 2));
 
         CreateLeftPanelStructure();
@@ -163,10 +165,12 @@ public class MainWindow extends JFrame {
         SummarizerPanel.setBorder(title);
         SummarizerPanel.setLayout(new GridLayout(1, 2));
 
-        helper.PrepareAttributesComboBox(summarizerAtributes);
-        SummarizerPanel.add(SummarizerAtributesPanel);
+        helper.PrepareSumarizerValuesTable(summarizationValuesTable);
 
+        helper.PrepareAttributesComboBox(summarizerAtributes);
         SummarizerPanel.add(SummarizerMemberFuncPanel);
+
+        SummarizerPanel.add(SummarizerValuesPanel);
         helper.PrepareMemberFuncComboBox(summarizerMemberFuncs);
     }
 
