@@ -36,7 +36,8 @@ public class RectangleMemberFunc implements IMemberFunc {
 
     @Override
     public Double SuppNiepoliczalny() {
-        return Math.abs(a-b);
+        Double przedziałwartości = Math.abs(a-b);
+        return przedziałwartości;
     }
 
     @Override

@@ -8,7 +8,7 @@ public class QualityVectorHelper {
     public DegreeOfCovering T3;
     public DegreeOfAppropriatness T4;
     public LengthOfSummary T5;
-    public DegreeOfQualifierPrecision T6;
+    public QuantifierPrecision T6;
     public DegreeOfQuantifierCardinality T7;
     public DegreeOfSummarizerCardinality T8;
     public DegreeOfQualifierPrecision T9;
@@ -21,7 +21,7 @@ public class QualityVectorHelper {
         T3 = new DegreeOfCovering();
         T4 = new DegreeOfAppropriatness();
         T5 = new LengthOfSummary();
-        T6 = new DegreeOfQualifierPrecision();
+        T6 = new QuantifierPrecision();
         T7 = new DegreeOfQuantifierCardinality();
         T8 = new DegreeOfSummarizerCardinality();
         T9 = new DegreeOfQualifierPrecision();
