@@ -74,7 +74,7 @@ public class MainController {
 
     public Quantifier GetQuantifier(String label) {
         for (Quantifier q : dataContext.quantifiers) {
-            if (label.equals(q.attribute + " - " + q.label)) {
+            if (label.equals(q.label)) {
                 return q;
             }
         }
@@ -90,7 +90,7 @@ public class MainController {
 
     public Qualifier GetQualifier(String label) {
         for (Qualifier q : dataContext.qualifiers) {
-            if (label.equals(q.label)) {
+            if (label.equals(q.attribute + " - " + q.label)) {
                 return q;
             }
         }
@@ -99,7 +99,7 @@ public class MainController {
 
     public void CreateSummary(String subject, String quantifierLabel, String summarizer1Label, String summarizer2Label, String operationLabel, String qualifierLabel) {
         Quantifier quantifier = GetQuantifier(quantifierLabel);
-        ArrayList<Double> quantifierValues = PrepareAttributeValuesList(quantifier.attribute);
+        ArrayList<Double> quantifierValues = null;
 
         Summarizer summarizer1 = GetSummarizer(summarizer1Label);
         ArrayList<Double> summarizer1Values = PrepareAttributeValuesList(summarizer1.attribute);

@@ -20,7 +20,7 @@ public class TriangleMemberFunc implements IMemberFunc {
         if (x < a || x > b) return 0.0;
         if (x > a && x < c) return (x - a) / (c - a);
         if (x > c && x < b) return (b - x) / (b - c);
-        if(Math.abs(x) == b) return 1.0;
+        if (Math.abs(x) == b) return 1.0;
         return 0.0;
     }
 
@@ -32,5 +32,17 @@ public class TriangleMemberFunc implements IMemberFunc {
     @Override
     public String ToString() {
         return "Trójkątna";
+    }
+
+    @Override
+    public Double SuppNiepoliczalny() {
+        return Math.abs(a - b);
+    }
+
+    @Override
+    public Double clmNiepoliczalny() {
+        Double pole;
+        pole = (Math.abs(a - b) * height) / 2.0;
+        return pole;
     }
 }
