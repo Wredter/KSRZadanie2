@@ -28,7 +28,7 @@ public class DegreeOfCovering implements IDegree {
             size = 0;
         }
         if (secondTypeSummary.Operation.equals("NONE")) {
-            for (int i = 0; i < secondTypeSummary.ValuesForSummarizer1.size(); i++) {
+            for (int i = 0; i < size; i++) {
                 if (secondTypeSummary.Summarizer1.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForSummarizer1.get(i)) != 0 && secondTypeSummary.Qualifier.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForQualifier.get(i)) != 0) {
                     ti++;
                 }
