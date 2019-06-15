@@ -14,18 +14,15 @@ public class DegreeOfCovering implements IDegree {
         int ti = 0;
         int hi = 0;
         int size;
-        if (secondTypeSummary.ValuesForSummarizer1 != null && secondTypeSummary.ValuesForSummarizer2 != null) {
-            if (secondTypeSummary.ValuesForSummarizer1.size() >= secondTypeSummary.ValuesForSummarizer2.size()) {
-                size = secondTypeSummary.ValuesForSummarizer2.size();
-            } else {
-                size = secondTypeSummary.ValuesForSummarizer1.size();
-            }
-        } else if (secondTypeSummary.ValuesForSummarizer1 != null) {
-            size = secondTypeSummary.ValuesForSummarizer1.size();
-        } else if (secondTypeSummary.ValuesForSummarizer2 != null) {
-            size = secondTypeSummary.ValuesForSummarizer2.size();
+        if (secondTypeSummary.ValuesForSummarizer1.size() >= secondTypeSummary.ValuesForQualifier.size()) {
+            size = secondTypeSummary.ValuesForQualifier.size();
         } else {
-            size = 0;
+            size = secondTypeSummary.ValuesForSummarizer1.size();
+        }
+        if(!secondTypeSummary.Operation.equals("NONE")){
+            if (size >= secondTypeSummary.ValuesForSummarizer2.size()) {
+                size = secondTypeSummary.ValuesForSummarizer2.size();
+            }
         }
         if (secondTypeSummary.Operation.equals("NONE")) {
             for (int i = 0; i < size; i++) {
