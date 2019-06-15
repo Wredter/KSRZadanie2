@@ -51,16 +51,27 @@ public class DegreeOfTruth implements IDegree {
     }
     private Double r(SecondTypeSummary secondTypeSummary) {
         Double result = 0.0;
+        int size;
+        if (secondTypeSummary.ValuesForSummarizer1.size() >= secondTypeSummary.ValuesForQualifier.size()) {
+            size = secondTypeSummary.ValuesForQualifier.size();
+        } else {
+            size = secondTypeSummary.ValuesForSummarizer1.size();
+        }
+        if(!secondTypeSummary.Operation.equals("NONE")){
+            if (size >= secondTypeSummary.ValuesForSummarizer2.size()) {
+                size = secondTypeSummary.ValuesForSummarizer2.size();
+            }
+        }
         if (secondTypeSummary.Operation.equals("OR")) {
-            for (int i = 0;i < secondTypeSummary.ValuesForSummarizer1.size(); i++) {
+            for (int i = 0;i < size; i++) {
                 result += Math.min(Math.max(secondTypeSummary.Summarizer1.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForSummarizer1.get(i)),secondTypeSummary.Summarizer2.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForSummarizer2.get(i))),secondTypeSummary.Qualifier.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForQualifier.get(i)));
             }
         } else if (secondTypeSummary.Operation.equals("AND")) {
-            for (int i = 0;i < secondTypeSummary.ValuesForSummarizer1.size(); i++) {
+            for (int i = 0;i < size; i++) {
                 result += Math.min(Math.min(secondTypeSummary.Summarizer1.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForSummarizer1.get(i)),secondTypeSummary.Summarizer2.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForSummarizer2.get(i))),secondTypeSummary.Qualifier.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForQualifier.get(i)));
             }
         } else {
-            for (int i = 0;i < secondTypeSummary.ValuesForSummarizer1.size(); i++) {
+            for (int i = 0;i < size; i++) {
                 result += Math.min(secondTypeSummary.Summarizer1.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForSummarizer1.get(i)),secondTypeSummary.Qualifier.fuzzySet.MemberFuncResult(secondTypeSummary.ValuesForQualifier.get(i)));
             }
         }
