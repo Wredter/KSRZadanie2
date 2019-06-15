@@ -1,13 +1,20 @@
 package KSRZadanie2.View.Helpers;
 
+import KSRZadanie2.Model.LinguisticVariables.Qualifier;
+import KSRZadanie2.Model.LinguisticVariables.Quantifier;
+import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 import KSRZadanie2.Model.Match;
 import KSRZadanie2.Model.Quality;
+import KSRZadanie2.View.DataContext;
 import KSRZadanie2.View.MainController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.crypto.Data;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class MainWindowHelper {
     MainController controller;
@@ -46,7 +53,7 @@ public class MainWindowHelper {
 
     public void PrepareSumarriesTable(JTable table) {
         DefaultTableModel rowModel = new DefaultTableModel(new String[]{"Tresc podsumowania", "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T"}, 0);
-        for(Quality summary : controller.dataContext.summaries1) {
+        for (Quality summary : controller.dataContext.summaries1) {
             if (summary.summaryType1 != null) {
                 rowModel.addRow(
                         new Object[]{
@@ -67,7 +74,7 @@ public class MainWindowHelper {
                 );
             }
         }
-        for(Quality summary : controller.dataContext.summaries2) {
+        for (Quality summary : controller.dataContext.summaries2) {
             if (summary.summaryType2 != null) {
                 rowModel.addRow(
                         new Object[]{
@@ -114,7 +121,7 @@ public class MainWindowHelper {
 
     private void AddAttrMinMaxToRowModel(DefaultTableModel rowModel, String attr) {
         rowModel.addRow(
-                new Object[] {
+                new Object[]{
                         attr,
                         GetMin(attr),
                         GetMax(attr),
@@ -125,13 +132,54 @@ public class MainWindowHelper {
     private Double GetMax(String sttr) {
         ArrayList<Double> list = controller.PrepareAttributeValuesList(sttr);
 
-        return  Collections.max(list);
+        return Collections.max(list);
     }
 
     private Double GetMin(String sttr) {
         ArrayList<Double> list = controller.PrepareAttributeValuesList(sttr);
 
-        return  Collections.min(list);
+        return Collections.min(list);
+    }
+
+    public void SerializeDataContext() {
+        String filename = "./Serialized/DataContext.ser";
+
+        try {
+            FileOutputStream file = new FileOutputStream(filename);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            out.writeObject(controller.dataContext);
+
+            out.close();
+            file.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public DataContext DeserializeDataContext() {
+        String filename = "./Serialized/DataContext.ser";
+        DataContext result = new DataContext();
+
+        try {
+            FileInputStream file = new FileInputStream(filename);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            Object temp = in.readObject();
+            result = (DataContext) temp;
+            result.summaries2 = new ArrayList<>();
+            result.summaries1 = new ArrayList<>();
+
+            in.close();
+            file.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
+        return result;
     }
 
 }

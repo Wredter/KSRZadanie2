@@ -1,5 +1,8 @@
 package KSRZadanie2.View;
 
+import KSRZadanie2.Model.LinguisticVariables.Qualifier;
+import KSRZadanie2.Model.LinguisticVariables.Quantifier;
+import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 import KSRZadanie2.View.Helpers.MainWindowHelper;
 
 import javax.swing.*;
@@ -65,6 +68,8 @@ public class MainWindow extends JFrame {
     private JComboBox qualifierAttributes;
     private JLabel Atrybut;
     private JTable summarizationValuesTable;
+    private JButton summarySaveParamsButton;
+    private JButton summaryLoadParamsButton;
     private JPanel MemberFuncParamsPanel;
     //endregion
 
@@ -116,6 +121,28 @@ public class MainWindow extends JFrame {
                 controller.dataContext.summaries1 = new ArrayList<>();
                 controller.dataContext.summaries2 = new ArrayList<>();
                 helper.PrepareSumarriesTable(summaries);
+            }
+        });
+        summarySaveParamsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                helper.SerializeDataContext();
+            }
+        });
+        summaryLoadParamsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.dataContext = helper.DeserializeDataContext();
+                for(Quantifier q : controller.dataContext.quantifiers) {
+                    helper.AddToComboBox(summaryQuantifiers, q.label);
+                }
+                for(Summarizer s : controller.dataContext.summarizers) {
+                    helper.AddToComboBox(summarySummarizer1, s.attribute + " - " + s.label);
+                    helper.AddToComboBox(summarySummarizer2, s.attribute + " - " + s.label);
+                }
+                for(Qualifier q : controller.dataContext.qualifiers) {
+                    helper.AddToComboBox(summaryQualifiers, q.attribute + " - " + q.label);
+                }
             }
         });
     }

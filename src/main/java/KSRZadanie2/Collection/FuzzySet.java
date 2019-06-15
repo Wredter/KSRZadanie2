@@ -4,9 +4,11 @@ import KSRZadanie2.MembershipFunction.IMemberFunc;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class FuzzySet implements ISet {
+public class FuzzySet implements ISet, Serializable {
     public IMemberFunc memberFunc;
 
     public Double MemberFuncResult(Double x) {

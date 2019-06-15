@@ -3,10 +3,11 @@ package KSRZadanie2.Model.Summary;
 import KSRZadanie2.Model.LinguisticVariables.Quantifier;
 import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 
+import java.io.Serializable;
 import java.util.List;
 
 //QP jest/ma S//
-public class FirstTypeSummary
+public class FirstTypeSummary implements Serializable
 {
     public String Subject;
     public Quantifier Quantifier;

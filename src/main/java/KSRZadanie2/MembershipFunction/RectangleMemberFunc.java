@@ -2,10 +2,12 @@ package KSRZadanie2.MembershipFunction;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RectangleMemberFunc implements IMemberFunc {
+public class RectangleMemberFunc implements IMemberFunc, Serializable {
     //  d c
     // a   b
     Double a;

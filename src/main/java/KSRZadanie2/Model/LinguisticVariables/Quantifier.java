@@ -2,7 +2,9 @@ package KSRZadanie2.Model.LinguisticVariables;
 
 import KSRZadanie2.Collection.FuzzySet;
 
-public class Quantifier extends LinguisticVariable {
+import java.io.Serializable;
+
+public class Quantifier extends LinguisticVariable implements Serializable {
     public String attribute;
 
     public Quantifier(String label, FuzzySet fuzzySet) {

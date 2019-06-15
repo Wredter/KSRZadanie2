@@ -3,9 +3,10 @@ package KSRZadanie2.Model;
 import KSRZadanie2.Model.Summary.FirstTypeSummary;
 import KSRZadanie2.Model.Summary.SecondTypeSummary;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Quality {
+public class Quality implements Serializable {
     public FirstTypeSummary summaryType1;
     public SecondTypeSummary summaryType2;
     public List<Double> qualities;

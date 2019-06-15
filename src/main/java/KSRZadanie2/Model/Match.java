@@ -2,12 +2,13 @@ package KSRZadanie2.Model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Match {
+public class Match implements Serializable {
     private String leagueDivision;
     private Date date;
     private String homeTeam;

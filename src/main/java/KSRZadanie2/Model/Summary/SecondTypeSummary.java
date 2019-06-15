@@ -3,9 +3,10 @@ package KSRZadanie2.Model.Summary;
 import KSRZadanie2.Model.LinguisticVariables.Qualifier;
 import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 
+import java.io.Serializable;
 import java.util.List;
 //QP będących S1 jest S2//
-public class SecondTypeSummary extends FirstTypeSummary {
+public class SecondTypeSummary extends FirstTypeSummary implements Serializable {
     public List<Double> ValuesForQualifier;
     public Qualifier Qualifier;
 

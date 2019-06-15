@@ -9,10 +9,11 @@ import KSRZadanie2.Model.LinguisticVariables.Summarizer;
 import KSRZadanie2.Model.Match;
 import KSRZadanie2.Model.Quality;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataContext {
+public class DataContext implements Serializable {
     public List<Match> matches;
 
     public IMemberFunc rectangleMemberFunc;

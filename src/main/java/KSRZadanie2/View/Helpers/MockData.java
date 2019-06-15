@@ -20,8 +20,8 @@ public class MockData {
         summarizers = new ArrayList<>();
         quantifiers = new ArrayList<>();
         qualifiers = new ArrayList<>();
-        CreateSummarizer1();
-        CreateQuantifier11();
+        //CreateSummarizer1();
+        //CreateQuantifier11();
     }
 
     void CreateSummarizer1() {
