@@ -33,4 +33,16 @@ public class RectangleMemberFunc implements IMemberFunc {
     public String ToString() {
         return "Prostokątna";
     }
+
+    @Override
+    public Double SuppNiepoliczalny() {
+        return Math.abs(a-b);
+    }
+
+    @Override
+    public Double clmNiepoliczalny() {
+        Double pole;
+        pole = ((Math.abs(a-b)+Math.abs(d-c))*height)/2.0;
+        return pole;
+    }
 }

@@ -10,18 +10,12 @@ public class DegreeOfQuantifierCardinality implements IDegree {
 
     @Override
     public Double Calc(FirstTypeSummary firstTypeSummary) {
-        return 1- (Cardinalty(firstTypeSummary.ValuesForQuantifier,firstTypeSummary.Quantifier.fuzzySet)/(double)firstTypeSummary.ValuesForQuantifier.size());
+        return 1- (firstTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny()/1.0);
     }
 
     @Override
     public Double Calc(SecondTypeSummary secondTypeSummary) {
-        return 1- (Cardinalty(secondTypeSummary.ValuesForQuantifier,secondTypeSummary.Quantifier.fuzzySet)/(double)secondTypeSummary.ValuesForQuantifier.size());
+        return 1- (secondTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny()/1.0);
     }
-    private Double Cardinalty(List<Double> values , FuzzySet fuzzySet){
-        double result = 0;
-        for(Double valu : values){
-            result += fuzzySet.MemberFuncResult(valu);
-        }
-        return result;
-    }
+
 }
