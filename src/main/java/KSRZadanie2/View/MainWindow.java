@@ -7,6 +7,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MainWindow extends JFrame {
     MainController controller;
@@ -84,14 +85,14 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.CreateSummarizer((String) summarizerAtributes.getSelectedItem(), summarizerMemberFuncLabel.getText(), (String) summarizerMemberFuncs.getSelectedItem(), Double.parseDouble(summarizerMemberFuncParamA.getText()), Double.parseDouble(summarizerMemberFuncParamB.getText()), Double.parseDouble(summarizerMemberFuncParamC.getText()), Double.parseDouble(summarizerMemberFuncParamD.getText()));
-                helper.AddToComboBox(summarySummarizer1, summarizerMemberFuncLabel.getText());
-                helper.AddToComboBox(summarySummarizer2, summarizerMemberFuncLabel.getText());
+                helper.AddToComboBox(summarySummarizer1, (String) summarizerAtributes.getSelectedItem() + " - " + summarizerMemberFuncLabel.getText());
+                helper.AddToComboBox(summarySummarizer2, (String) summarizerAtributes.getSelectedItem() + " - " + summarizerMemberFuncLabel.getText());
             }
         });
         quantifierAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.CreateQuantifier((String) quantifierAtributes.getSelectedItem(), quantifierMemberFuncLabel.getText(), (String) quantifierMemberFuncs.getSelectedItem(), Double.parseDouble(quantifierMemberFuncParamA.getText()), Double.parseDouble(quantifierMemberFuncParamB.getText()), Double.parseDouble(quantifierMemberFuncParamC.getText()), Double.parseDouble(quantifierMemberFuncParamD.getText()));
+                controller.CreateQuantifier(" ", quantifierMemberFuncLabel.getText(), (String) quantifierMemberFuncs.getSelectedItem(), Double.parseDouble(quantifierMemberFuncParamA.getText()), Double.parseDouble(quantifierMemberFuncParamB.getText()), Double.parseDouble(quantifierMemberFuncParamC.getText()), Double.parseDouble(quantifierMemberFuncParamD.getText()));
                 helper.AddToComboBox(summaryQuantifiers, quantifierMemberFuncLabel.getText());
             }
         });
@@ -99,13 +100,21 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.CreateQualifier((String) qualifierAttributes.getSelectedItem(), qualifierMemberFuncLabel.getText(), (String) qualifierMemberFuncs.getSelectedItem(), Double.parseDouble(qualifierMemberFuncParamA.getText()), Double.parseDouble(qualifierMemberFuncParamB.getText()), Double.parseDouble(qualifierMemberFuncParamC.getText()), Double.parseDouble(qualifierMemberFuncParamD.getText()));
-                helper.AddToComboBox(summaryQualifiers, qualifierMemberFuncLabel.getText());
+                helper.AddToComboBox(summaryQualifiers, (String) qualifierAttributes.getSelectedItem() + " - " + qualifierMemberFuncLabel.getText());
             }
         });
         summaryAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.CreateSummary(summaryTitle.getText(), (String) summaryQuantifiers.getSelectedItem(), (String) summarySummarizer1.getSelectedItem(), (String) summarySummarizer2.getSelectedItem(), (String) summaryOperations.getSelectedItem(), (String) summaryQualifiers.getSelectedItem());
+                helper.PrepareSumarriesTable(summaries);
+            }
+        });
+        summaryClearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.dataContext.summaries1 = new ArrayList<>();
+                controller.dataContext.summaries2 = new ArrayList<>();
                 helper.PrepareSumarriesTable(summaries);
             }
         });

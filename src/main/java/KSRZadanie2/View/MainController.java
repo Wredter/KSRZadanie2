@@ -58,7 +58,7 @@ public class MainController {
 
     public Summarizer GetSummarizer(String label) {
         for (Summarizer s : dataContext.summarizers) {
-            if (label.equals(s.label)) {
+            if (label.equals(s.attribute + " - " + s.label)) {
                 return s;
             }
         }
@@ -74,7 +74,7 @@ public class MainController {
 
     public Quantifier GetQuantifier(String label) {
         for (Quantifier q : dataContext.quantifiers) {
-            if (label.equals(q.label)) {
+            if (label.equals(q.attribute + " - " + q.label)) {
                 return q;
             }
         }
@@ -200,31 +200,12 @@ public class MainController {
         resultVector.add(qualityVectorHelper.T6.Calc(summary));
         resultVector.add(qualityVectorHelper.T7.Calc(summary));
         resultVector.add(qualityVectorHelper.T8.Calc(summary));
-        resultVector.add(qualityVectorHelper.T9.Calc(summary));
-        resultVector.add(qualityVectorHelper.T10.Calc(summary));
-        resultVector.add(qualityVectorHelper.T11.Calc(summary));
-        resultVector.add(CalculateGeneralDegree(resultVector));
+        resultVector.add(0.0);
+        resultVector.add(0.0);
+        resultVector.add(0.0);
+        resultVector.add(CalculateGeneralDegree(resultVector, 8.0));
 
         return resultVector;
-    }
-
-    public Double CalculateGeneralDegree(List<Double> degreeVector) {
-        Double result = 0.0;
-        //Double i = 0.0;
-
-        for(Double d : degreeVector) {
-            if(d != null) {
-                result += d;
-                //i += 1.0;
-            }
-        }
-
-//        if(i == 0.0) {
-//            return 0.0;
-//        } else {
-//            return (result / i);
-//        }
-        return (result / 11.0);
     }
 
     public List<Double> CalculateDegreeVector(SecondTypeSummary summary) {
@@ -242,9 +223,20 @@ public class MainController {
         resultVector.add(qualityVectorHelper.T9.Calc(summary));
         resultVector.add(qualityVectorHelper.T10.Calc(summary));
         resultVector.add(qualityVectorHelper.T11.Calc(summary));
-        resultVector.add(CalculateGeneralDegree(resultVector));
+        resultVector.add(CalculateGeneralDegree(resultVector, 11.0));
 
         return resultVector;
     }
 
+    public Double CalculateGeneralDegree(List<Double> degreeVector, Double w) {
+        Double result = 0.0;
+
+        for(Double d : degreeVector) {
+            if(d != null) {
+                result += d;
+            }
+        }
+
+        return (result / w);
+    }
 }

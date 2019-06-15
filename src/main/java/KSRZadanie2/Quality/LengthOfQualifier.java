@@ -6,7 +6,7 @@ import KSRZadanie2.Model.Summary.SecondTypeSummary;
 public class LengthOfQualifier implements IDegree {
     @Override
     public Double Calc(FirstTypeSummary firstTypeSummary) {
-        return null;
+        return 0.0;
     }
 
     @Override
