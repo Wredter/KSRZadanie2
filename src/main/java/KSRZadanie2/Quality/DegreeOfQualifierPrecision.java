@@ -9,7 +9,7 @@ import java.util.List;
 public class DegreeOfQualifierPrecision implements IDegree {
     @Override
     public Double Calc(FirstTypeSummary firstTypeSummary) {
-        return null;
+        return 0.0;
     }
 
     @Override
