@@ -15,7 +15,8 @@ public class DataInserter {
         File folder = new File(path);
 
         for (final File fileEntry : folder.listFiles()) {
-            matches.addAll(dataParser.parseMatch(fileEntry.getPath()));
+            if(!fileEntry.isHidden())
+                matches.addAll(dataParser.parseMatch(fileEntry.getPath()));
         }
         return matches;
     }

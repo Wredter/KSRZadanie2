@@ -9,12 +9,14 @@ import java.util.List;
 public class QuantifierPrecision implements IDegree {
     @Override
     public Double Calc(FirstTypeSummary firstTypeSummary) {
-        return 1-(firstTypeSummary.Quantifier.fuzzySet.memberFunc.SuppNiepoliczalny()/1.0);
+        Double x = 1-(firstTypeSummary.Quantifier.fuzzySet.memberFunc.SuppNiepoliczalny()/1.0);
+        return x;
     }
 
     @Override
     public Double Calc(SecondTypeSummary secondTypeSummary) {
-        return 1-(secondTypeSummary.Quantifier.fuzzySet.memberFunc.SuppNiepoliczalny()/1.0);
+        Double x = 1-(secondTypeSummary.Quantifier.fuzzySet.memberFunc.SuppNiepoliczalny()/1.0);
+        return x;
     }
 
 }
