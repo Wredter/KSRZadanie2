@@ -129,7 +129,7 @@ public class MainController {
             } else {
                 Summarizer summarizer2 = GetSummarizer(summarizer2Label);
                 ArrayList<Double> summarizer2Values = PrepareAttributeValuesList(summarizer2.attribute);
-                SecondTypeSummary summaryType2 = new SecondTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer2, summarizer1Values, summarizer2Values, operationLabel, quantifierValues, qualifier);
+                SecondTypeSummary summaryType2 = new SecondTypeSummary(subject, quantifier, quantifierValues, summarizer1, summarizer2, summarizer1Values, summarizer2Values, operationLabel, qualifierValues, qualifier);
                 //dataContext.summaries2.add(summaryType2);
                 dataContext.summaries2.add(new Quality(summaryType2, CalculateDegreeVector(summaryType2)));
             }
@@ -203,7 +203,7 @@ public class MainController {
         resultVector.add(0.0);
         resultVector.add(0.0);
         resultVector.add(0.0);
-        resultVector.add(CalculateGeneralDegree(resultVector, 8.0));
+        resultVector.add(CalculateGeneralDegree(resultVector, 7.0));
 
         return resultVector;
     }
