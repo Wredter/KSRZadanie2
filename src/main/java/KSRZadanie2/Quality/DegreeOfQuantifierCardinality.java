@@ -10,12 +10,24 @@ public class DegreeOfQuantifierCardinality implements IDegree {
 
     @Override
     public Double Calc(FirstTypeSummary firstTypeSummary) {
-        return 1- (firstTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny()/1.0);
+        Double x;
+        if(firstTypeSummary.Quantifier.isBezwzgl){
+            x = 1 - (firstTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny()/firstTypeSummary.DataSetSize);
+        }else {
+            x = 1 - (firstTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny() / 1.0);
+        }
+        return x;
     }
 
     @Override
     public Double Calc(SecondTypeSummary secondTypeSummary) {
-        return 1- (secondTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny()/1.0);
+        Double x;
+        if(secondTypeSummary.Quantifier.isBezwzgl){
+            x = 1 - (secondTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny() / secondTypeSummary.DataSetSize);
+        }else {
+            x = 1 - (secondTypeSummary.Quantifier.fuzzySet.memberFunc.clmNiepoliczalny() / 1.0);
+        }
+        return x;
     }
 
 }

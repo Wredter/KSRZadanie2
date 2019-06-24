@@ -11,25 +11,25 @@ public class FirstTypeSummary implements Serializable
 {
     public String Subject;
     public Quantifier Quantifier;
-    public List<Double> ValuesForQuantifier;
+    public int DataSetSize;
     public Summarizer Summarizer1;
     public Summarizer Summarizer2;
     public List<Double> ValuesForSummarizer1;
     public List<Double> ValuesForSummarizer2;
     public String Operation = "NONE";
 
-    public FirstTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, List<Double> valuesForQualifier, Summarizer summarizer1, List<Double> valuesForSummarizer1) {
+    public FirstTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, int valuesForQualifier, Summarizer summarizer1, List<Double> valuesForSummarizer1) {
         Subject = subject;
         Quantifier = quantifier;
-        ValuesForQuantifier = valuesForQualifier;
+        DataSetSize = valuesForQualifier;
         Summarizer1 = summarizer1;
         ValuesForSummarizer1 = valuesForSummarizer1;
     }
 
-    public FirstTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, List<Double> valuesForQualifier, Summarizer summarizer1, Summarizer summarizer2, List<Double> valuesForSummarizer1, List<Double> valuesForSummarizer2, String operation) {
+    public FirstTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, int valuesForQualifier, Summarizer summarizer1, Summarizer summarizer2, List<Double> valuesForSummarizer1, List<Double> valuesForSummarizer2, String operation) {
         Subject = subject;
         Quantifier = quantifier;
-        ValuesForQuantifier = valuesForQualifier;
+        DataSetSize = valuesForQualifier;
         Summarizer1 = summarizer1;
         Summarizer2 = summarizer2;
         ValuesForSummarizer1 = valuesForSummarizer1;

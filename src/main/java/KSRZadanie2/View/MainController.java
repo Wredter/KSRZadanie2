@@ -99,7 +99,7 @@ public class MainController {
 
     public void CreateSummary(String subject, String quantifierLabel, String summarizer1Label, String summarizer2Label, String operationLabel, String qualifierLabel) {
         Quantifier quantifier = GetQuantifier(quantifierLabel);
-        ArrayList<Double> quantifierValues = null;
+        int quantifierValues = dataContext.matches.size();
 
         Summarizer summarizer1 = GetSummarizer(summarizer1Label);
         ArrayList<Double> summarizer1Values = PrepareAttributeValuesList(summarizer1.attribute);

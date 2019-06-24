@@ -10,13 +10,13 @@ public class SecondTypeSummary extends FirstTypeSummary implements Serializable 
     public List<Double> ValuesForQualifier;
     public Qualifier Qualifier;
 
-    public SecondTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, List<Double> valuesForQualifier, Summarizer summarizer1, List<Double> valuesForSummarizer1, List<Double> valuesForQuantifier, Qualifier qualifier) {
+    public SecondTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, int valuesForQualifier, Summarizer summarizer1, List<Double> valuesForSummarizer1, List<Double> valuesForQuantifier, Qualifier qualifier) {
         super(subject, quantifier, valuesForQualifier, summarizer1, valuesForSummarizer1);
         ValuesForQualifier = valuesForQuantifier;
         Qualifier = qualifier;
     }
 
-    public SecondTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, List<Double> valuesForQualifier, Summarizer summarizer1, Summarizer summarizer2, List<Double> valuesForSummarizer1, List<Double> valuesForSummarizer2, String operation, List<Double> valuesForQuantifier, Qualifier qualifier) {
+    public SecondTypeSummary(String subject, KSRZadanie2.Model.LinguisticVariables.Quantifier quantifier, int valuesForQualifier, Summarizer summarizer1, Summarizer summarizer2, List<Double> valuesForSummarizer1, List<Double> valuesForSummarizer2, String operation, List<Double> valuesForQuantifier, Qualifier qualifier) {
         super(subject, quantifier, valuesForQualifier, summarizer1, summarizer2, valuesForSummarizer1, valuesForSummarizer2, operation);
         ValuesForQualifier = valuesForQuantifier;
         Qualifier = qualifier;

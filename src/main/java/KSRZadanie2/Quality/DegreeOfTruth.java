@@ -13,11 +13,19 @@ import java.util.List;
 public class DegreeOfTruth implements IDegree {
     @Override
     public Double Calc(FirstTypeSummary firstTypeSummary) {
-        return firstTypeSummary.Quantifier.fuzzySet.MemberFuncResult(r(firstTypeSummary) / firstTypeSummary.ValuesForSummarizer1.size());
+        if(firstTypeSummary.Quantifier.isBezwzgl) {
+            return firstTypeSummary.Quantifier.fuzzySet.MemberFuncResult(r(firstTypeSummary));
+        }else {
+            return firstTypeSummary.Quantifier.fuzzySet.MemberFuncResult(r(firstTypeSummary) / firstTypeSummary.DataSetSize);
+        }
     }
     @Override
     public Double Calc(SecondTypeSummary secondTypeSummary){
-        return secondTypeSummary.Quantifier.fuzzySet.MemberFuncResult(r(secondTypeSummary)/secondTypeSummary.ValuesForSummarizer1.size());
+        if(secondTypeSummary.Quantifier.isBezwzgl) {
+            return secondTypeSummary.Quantifier.fuzzySet.MemberFuncResult(r(secondTypeSummary));
+        }else {
+            return secondTypeSummary.Quantifier.fuzzySet.MemberFuncResult(r(secondTypeSummary) / secondTypeSummary.DataSetSize);
+        }
     }
 
     private Double r(FirstTypeSummary firstTypeSummary) {
