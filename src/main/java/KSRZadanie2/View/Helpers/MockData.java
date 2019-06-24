@@ -31,10 +31,10 @@ public class MockData {
         summarizers.add(s);
     }
 
-    void CreateQuantifier11() {
-        RectangleMemberFunc func = new RectangleMemberFunc(10.0, 20.0, 18.0, 12.0, 1.0);
-        FuzzySet set = new FuzzySet(func);
-        Quantifier q = new Quantifier("Mało", set, "homeTeamShots");
-        quantifiers.add(q);
-    }
+//    void CreateQuantifier11() {
+//        RectangleMemberFunc func = new RectangleMemberFunc(10.0, 20.0, 18.0, 12.0, 1.0);
+//        FuzzySet set = new FuzzySet(func);
+//        Quantifier q = new Quantifier("Mało", set, "homeTeamShots");
+//        quantifiers.add(q);
+//    }
 }

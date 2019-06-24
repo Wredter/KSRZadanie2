@@ -70,6 +70,7 @@ public class MainWindow extends JFrame {
     private JTable summarizationValuesTable;
     private JButton summarySaveParamsButton;
     private JButton summaryLoadParamsButton;
+    private JCheckBox quantifierIsBezwzglCheckBox;
     private JPanel MemberFuncParamsPanel;
     //endregion
 
@@ -97,7 +98,11 @@ public class MainWindow extends JFrame {
         quantifierAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.CreateQuantifier(" ", quantifierMemberFuncLabel.getText(), (String) quantifierMemberFuncs.getSelectedItem(), Double.parseDouble(quantifierMemberFuncParamA.getText()), Double.parseDouble(quantifierMemberFuncParamB.getText()), Double.parseDouble(quantifierMemberFuncParamC.getText()), Double.parseDouble(quantifierMemberFuncParamD.getText()));
+                if (quantifierIsBezwzglCheckBox.isSelected()) {
+                    controller.CreateQuantifier(" ", true, quantifierMemberFuncLabel.getText(), (String) quantifierMemberFuncs.getSelectedItem(), Double.parseDouble(quantifierMemberFuncParamA.getText()), Double.parseDouble(quantifierMemberFuncParamB.getText()), Double.parseDouble(quantifierMemberFuncParamC.getText()), Double.parseDouble(quantifierMemberFuncParamD.getText()));
+                } else {
+                    controller.CreateQuantifier(" ", false, quantifierMemberFuncLabel.getText(), (String) quantifierMemberFuncs.getSelectedItem(), Double.parseDouble(quantifierMemberFuncParamA.getText()), Double.parseDouble(quantifierMemberFuncParamB.getText()), Double.parseDouble(quantifierMemberFuncParamC.getText()), Double.parseDouble(quantifierMemberFuncParamD.getText()));
+                }
                 helper.AddToComboBox(summaryQuantifiers, quantifierMemberFuncLabel.getText());
             }
         });

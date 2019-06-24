@@ -65,9 +65,9 @@ public class MainController {
         return null;
     }
 
-    public void CreateQuantifier(String attribute, String label, String memberFuncName, Double a, Double b, Double c, Double d) {
+    public void CreateQuantifier(String attribute, Boolean isBezwgl, String label, String memberFuncName, Double a, Double b, Double c, Double d) {
         FuzzySet set = new FuzzySet(CreateMemberFunc(memberFuncName, a, b, c, d));
-        Quantifier quantifier = new Quantifier(label, set, attribute);
+        Quantifier quantifier = new Quantifier(label, isBezwgl, set, attribute);
 
         dataContext.quantifiers.add(quantifier);
     }
